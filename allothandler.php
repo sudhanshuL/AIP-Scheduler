@@ -66,8 +66,9 @@ if (isset($_POST['regSubmit']) && isset($_SESSION['username'])) {
     echo $row['time'];
     $save = $row['name'];
     $save1 = $row["time"] - 1;
+    $save2=$row['password'];
     $res=mysqli_query($db,"DELETE FROM teachers WHERE name='$save' ");
-    $reg_query = "Insert into teachers (name,time) values ('$save', '$save1')";
+    $reg_query = "Insert into teachers (name,time,password) values ('$save', '$save1','$save2')";
     $reg_result = mysqli_query($db, $reg_query);
     // $save2=$row["time"];
     // echo $save1;

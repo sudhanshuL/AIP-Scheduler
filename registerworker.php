@@ -5,8 +5,9 @@
     
     $name=$_POST['regName'];
     $time=$_POST['regTime'];
+    $password=$_POST['regPassword'];
     
-    $reg_query = "Insert into teachers (name,time) values ('$name', '$time')";
+    $reg_query = "Insert into teachers (name,time,password) values ('$name', '$time','$password')";
     $reg_result = mysqli_query($db, $reg_query);
 
   }
@@ -70,6 +71,12 @@
                       <div class="form-group">
                         <label class="form-control-label" for="input-room">Total Time<span class="text-danger">*</span></label>
                         <input type="number" name="regTime" id="input-room" class="form-control" required placeholder="Enter numeric value">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-room">Password<span class="text-danger">*</span></label>
+                        <input type="number" name="regPassword" id="input-room" class="form-control" required placeholder="Enter numeric value" value="12345">
                       </div>
                     </div>
                   </div>

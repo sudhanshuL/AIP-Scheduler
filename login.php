@@ -88,7 +88,8 @@ if(isset($_POST['studentLogin'])){
               </div>
               <button name="studentLogin" type="submit" class="waves-effect waves-light btn">Continue</button>
             </form>
-            <a class="link" href="alogin.php">or Admin login</a>
+            <a class="link" href="alogin.php">Admin login</a>
+            <a class="link" href="teacher.php">Teacher login</a>
           </div>
         </div>
       </div>
