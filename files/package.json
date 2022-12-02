@@ -1,24 +1,24 @@
 {
-  "name": "github-graph",
+  "name": "aip",
   "version": "1.0.0",
-  "description": "Do you want to have coll graph?",
+  "description": "This is ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "(https://github.com/psycho376/github-bot)"
+    "url": "git+ssh://git@github.com/satyam25102000/AIP---Planner-.git"
   },
-  "author": "Rohit Aggarwal",
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "core-util-is": "^1.0.2",
-    "jsonfile": "^6.1.0",
-    "moment": "^2.29.1",
-    "random": "^3.0.6",
-    "simple-git": "^2.38.0",
-    "webpack-dev-server": "^3.11.2"
+  "bugs": {
+    "url": "https://github.com/satyam25102000/AIP---Planner-/issues"
   },
-  "devDependencies": {}
+  "homepage": "https://github.com/satyam25102000/AIP---Planner-#readme",
+  "dependencies": {
+    "jsonfile": "^6.1.0",
+    "moment": "^2.29.4",
+    "simple-git": "^3.15.1"
+  }
 }
