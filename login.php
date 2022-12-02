@@ -2,15 +2,15 @@
 require("db.php");
 $err='';
 if(isset($_POST['studentLogin'])){
+  // header("location: ./index.php");
   $rollnumber = mysqli_real_escape_string($db, $_POST['studentRoll']);
   $password = mysqli_real_escape_string($db, $_POST['studentPass']);
  
-	$res=mysqli_query($db,"select * from student where rollnumber='$rollnumber'");
+	$res=mysqli_query($db,"select * from students where name='$rollnumber'");
 	$check=mysqli_num_rows($res);
 	if($check>0){
 		$row=mysqli_fetch_assoc($res);	
 		$dbpassword=$row['password'];	
-   
 				if($password=$dbpassword){
                 session_start();
                 $box=$_SESSION['rollnumber'] = $rollnumber;
@@ -76,8 +76,8 @@ if(isset($_POST['studentLogin'])){
             <form  method="POST" autocomplete="off" class="col s12">            
               <div class="row flex-h-center mb-0">
                 <div class="input-field col s8">
-                  <input name="studentRoll" type="number" id="rollnumber" class="validate" required>
-                  <label for="rollnumber">Roll number</label>
+                  <input name="studentRoll" type="text" id="rollnumber" class="validate" required>
+                  <label for="rollnumber">Name</label>
                 </div>
               </div>
               <div class="row flex-h-center">

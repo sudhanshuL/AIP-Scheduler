@@ -1,39 +1,43 @@
-<?php 
-  session_start();
-  if (!isset($_SESSION['username'])) {
-  	header("Location: alogin.php");
-  }
-  if (isset($_GET['logout'])) {
-    unset($_SESSION['username']);
-    session_destroy();
-  	header("Location: alogin.php");
-  }
+<?php
+session_start();
+require("db.php");
+if (!isset($_SESSION['username'])) {
+  header("Location: alogin.php");
+}
+if (isset($_GET['logout'])) {
+  unset($_SESSION['username']);
+  session_destroy();
+  header("Location: alogin.php");
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Register Student - Housekeeper Admin Dashboard</title>
   <?php require("meta.php"); ?>
 </head>
+
 <body>
   <!-- Side Navigation -->
   <?php require("allotsidenav.php"); ?>
   <!-- Main content -->
   <div class="main-content">
-      <!-- Header -->
-      <div class="header bg-background pb-6 pt-5 pt-md-6">
+    <!-- Header -->
+    <div class="header bg-background pb-6 pt-5 pt-md-6">
       <div class="container-fluid">
         <!-- notification message -->
-        <?php if (isset($_SESSION['student_registered'])) : ?>
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
-            <?php echo $_SESSION['student_registered']; unset($_SESSION['student_registered']); ?>
+        <?php if (isset($_SESSION['student_registered'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+          <?php echo $_SESSION['student_registered'];
+          unset($_SESSION['student_registered']); ?>
           </span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <?php endif ?>
         <?php require("allotheader.php"); ?>
       </div>
@@ -52,29 +56,103 @@
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-id">Roll Number <span class="text-danger">*</span></label>
-                        <input type="number" name="regRoll" id="input-id" class="form-control" required placeholder="Enter numeric value">
+                        <label class="form-control-label" for="input-id">Student name <span
+                            class="text-danger">*</span></label>
+                        <input type="text" name="regStudent" id="input-id" class="form-control" required
+                          placeholder="Enter student time">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-room">Room Number <span class="text-danger">*</span></label>
-                        <input type="text" name="regRoom" id="input-room" class="form-control" required placeholder="Ex : C202">
+                        <label class="form-control-label" for="input-room">Date <span
+                            class="text-danger">*</span></label>
+                        <input type="date" name="regDate" id="input-room" class="form-control" required
+                          placeholder="Ex : C202">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-time">Floor <span class="text-danger">*</span></label>
-                        <input type="number" name="regFloor" id="input-time" class="form-control" required placeholder="Enter single digit no.">
+                        <label class="form-control-label" for="input-time">Time <span
+                            class="text-danger">*</span></label>
+                        <input type="time" name="regTime" id="input-time" class="form-control" required
+                          placeholder="Enter single digit no.">
                       </div>
                     </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-time">Password <span
+                            class="text-danger">*</span></label>
+                        <input type="data" name="regPassword" id="input-time" class="form-control" required
+                          placeholder="Enter single digit no.">
+                      </div>
+                    </div>
+                    Assigned Teacher from the system will be
+                    <!-- <?php
+                    $val=1;
+                    $res=mysqli_query($db,"select name from teachers order by time limit $val");
+                    // echo $res;
+                    $check=mysqli_num_rows($res);
+                    $row=mysqli_fetch_assoc($res);
+                    echo $row['name'];
+                    ?> -->
+                    <tbody>
+                      <br>
+              <?php
+                // $res=mysqli_query($db,"select * from teachers");
+                // $res=mysqli_query($db,"select * from teachers");
+                // $check=mysqli_num_rows($res);
+                $res=mysqli_query($db,"select * from teachers order by time desc");
+                $check=mysqli_num_rows($res);
+                while ($row=mysqli_fetch_assoc($res)){
+                  // echo $row;
+                  // echo $row['time'];
+                  // echo $row['time'];
+                  // $save=$row['name'];
+                  // $save1=$row["time"]-1;
+                  // // $save2=$row["time"];
+                  // echo $save1;
+                  // $res=mysqli_query($db,"UPDATE teachers SET time=$save WHERE name='$save1'");
+                  // $check=mysqli_num_rows($res);
+                  // echo $check;
+                  ?>
+                  <tr>
+                  <td><?php echo $row['name'];?></td>
+                  <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-time">Teacher<span
+                            class="text-danger">*</span></label>
+                        <input type="data" name="regTeacher" id="input-time" class="form-control" value=<?php echo $row['name'];?> required
+                          placeholder=<?php echo $row['name'];?>>
+                      </div>
+                    </div>
+                 <br>
+                  </tr>
+                  <?php
+                  break;
+                }
+                ?>
+              </tbody>
+                    
+
+                    <!-- <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-time"> <span class="text-danger">*</span></label>
+                        <input type="data" name="regPassword" id="input-time" class="form-control" required placeholder="Enter single digit no.">
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-time">Password <span class="text-danger">*</span></label>
+                        <input type="data" name="regPassword" id="input-time" class="form-control" required placeholder="Enter single digit no.">
+                      </div>
+                    </div> -->
                   </div>
-                  <button name="regSubmit" class="btn btn-icon btn-3 btn-primary" type="submit">
+                  <button name="regSubmit" onclick=helper class="btn btn-icon btn-3 btn-primary" type="submit">
                     <span class="btn-inner--text">Register</span>
                   </button>
                 </div>
               </form>
-              
+
             </div>
           </div>
         </div>
@@ -82,10 +160,22 @@
     </div>
   </div>
 
-  
+  <script>
+    // function helper(){
+    //   <?php
+    //                 $val=1;
+    //                 $res=mysqli_query($db,"select name from students order by time limit $val");
+    //                 $check=mysqli_num_rows($res);
+    //                 echo $check;
+    //                 ?>
+    //   alert($check)
+
+    // }
+  </script>
   <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/bootstrap/dist/js/bootstrap-datepicker.min.js"></script>
   <script src="assets/js/argon.min.js"></script>
 </body>
+
 </html>

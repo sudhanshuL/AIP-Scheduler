@@ -1,5 +1,15 @@
 <?php 
+  require("db.php");
   session_start();
+  if (isset($_POST['submit'])){
+    
+    $name=$_POST['regName'];
+    $time=$_POST['regTime'];
+    
+    $reg_query = "Insert into teachers (name,time) values ('$name', '$time')";
+    $reg_result = mysqli_query($db, $reg_query);
+
+  }
   if (!isset($_SESSION['username'])) {
   	header("Location: alogin.php");
   }
@@ -44,30 +54,52 @@
         <div class="col-xl-12 order-xl-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
-              <h3 class="mb-0">Register New Teacher</h3>
+              <h3 class="mb-0">Register New </h3>
             </div>
             <div class="card-body pb-5">
-              <form method="POST" autocomplete="off" action="allothandler.php">
+              <form method="POST" autocomplete="off">
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-id">Name <span class="text-danger">*</span></label>
-                        <input type="text" name="regName" id="input-id" class="form-control" required placeholder="Housekeeper Name">
+                        <label class="form-control-label" for="input-id">Faculty Name <span class="text-danger">*</span></label>
+                        <input type="text" name="regName" id="input-id" class="form-control" required placeholder="Faculty Name">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-room">Floor <span class="text-danger">*</span></label>
-                        <input type="number" name="regFloor" id="input-room" class="form-control" required placeholder="Enter numeric value">
+                        <label class="form-control-label" for="input-room">Total Time<span class="text-danger">*</span></label>
+                        <input type="number" name="regTime" id="input-room" class="form-control" required placeholder="Enter numeric value">
                       </div>
                     </div>
                   </div>
-                  <button name="regKeeperSubmit" class="btn btn-icon btn-3 btn-primary" type="submit">
+                  <button name="submit" class="btn btn-icon btn-3 btn-primary" type="submit">
                     <span class="btn-inner--text">Register</span>
                   </button>
+                  <br>
+                  <br>
+                  <br>
+                  <span class="btn-inner--text">All Faculty Listed Below</span>
                 </div>
               </form>
+              <tbody>
+              <?php
+                $res=mysqli_query($db,"select * from teachers");
+                $check=mysqli_num_rows($res);
+                while ($row=mysqli_fetch_assoc($res)){
+                  ?>
+                  <tr>
+                  <td><?php echo $row['name'];?></td>
+                  <td><?php echo $row['time'];?></td>
+                  
+                 <td><a href="deletet.php?deleteid=<?php echo $row['name'];?>">DELETE</a></td>
+                 <br>
+                  </tr>
+                  <?php
+                }
+                ?>
+              </tbody>
+              
               
             </div>
           </div>
