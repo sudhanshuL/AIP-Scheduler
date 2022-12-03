@@ -26,6 +26,12 @@
 <head>
   <title>Register HouseKeeper - Housekeeper Admin Dashboard</title>
   <?php require("meta.php"); ?>
+<style>
+.save{
+  font-size: 30px;
+  padding: 10px;
+}
+</style>
 </head>
 <body>
   <!-- Side Navigation -->
@@ -96,10 +102,10 @@
                 while ($row=mysqli_fetch_assoc($res)){
                   ?>
                   <tr>
-                  <td><?php echo $row['name'];?></td>
-                  <td><?php echo $row['time'];?></td>
+                    <span class="save"><?php echo $row['name'];?></span> 
+                  <span class="save"><?php echo $row['time'];?></span>
                   
-                 <td><a href="deletet.php?deleteid=<?php echo $row['name'];?>">DELETE</a></td>
+                 <span class="save"><a href="deletet.php?deleteid=<?php echo $row['name'];?>">DELETE</a></span>
                  <br>
                   </tr>
                   <?php

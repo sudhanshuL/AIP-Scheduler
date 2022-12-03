@@ -14,7 +14,7 @@ if (isset($_GET['logout'])) {
 <html lang="en">
 
 <head>
-  <title>Housekeeper Admin Dashboard</title>
+  <title>H Admin Dashboard</title>
   <?php require("meta.php"); ?>
 </head>
 
@@ -98,7 +98,7 @@ if (isset($_GET['logout'])) {
                   <td><?php echo $row['name'];?></td>
                   <td><?php echo $row['date'];?></td>
                   <td><?php echo $row['time'];?></td>
-                 <td><a href="update.php?id=<?php echo $row['name'];?>" onclick="">UPDATE</a></td>
+                 <td><a href="update.php?updateid=<?php echo $row['name'];?>" onclick="">UPDATE</a></td>
                  <td><a href="delete.php?deleteid=<?php echo $row['name'];?>">DELETE</a></td>
                   <!-- <a href="" onclick="">Update</a> -->
                   <!-- <td><button onclick="">Update</button></td> -->

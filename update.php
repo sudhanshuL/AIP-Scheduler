@@ -1,26 +1,27 @@
 <?php
 // require("db.php");
 require("db.php");
-$save=$_GET['updateid'];
+
 // echo $save;
 // $res=mysqli_query($db,"DELETE FROM students WHERE name='$save' ");
 if (isset($_POST['submit'])){
-
+  $save=$_GET['updateid'];
     $name=$_POST['name'];
     $date=$_POST['date'];
     $time=$_POST['time'];
     $password="12345";
+  $teacher = $_POST['teacher'];
     $res=mysqli_query($db,"DELETE FROM students WHERE name='$save' ");
-    $reg_query = "Insert into students (name,date,time,password) values ('$name', '$date', '$time','$password')";
+    $reg_query = "Insert into students (name,date,time,password,teacher) values ('$name', '$date', '$time','$password','$teacher')";
     $reg_result = mysqli_query($db, $reg_query);
     // $res=mysqli_query($db,"UPDATE `students` SET name=$name,date=$date,time=$time,password=$password WHERE name='$save'");
     // $sql ="UPDATE `students` set name=$name,date=$date,time=$time WHERE name='$save'";
-    echo $res;
-    echo $reg_result;
-    echo $save;
-    echo $name;
-    echo $date;
-    echo $time;
+    // echo $res;
+    // echo $reg_result;
+    // echo $save;
+    // echo $name;
+    // echo $date;
+    // echo $time;
 }
 
 ?>
@@ -65,21 +66,46 @@ if (isset($_POST['submit'])){
                     <div class="col-md-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-id">Student name <span class="text-danger">*</span></label>
-                        <input type="text" name="name" id="input-id" class="form-control" required placeholder="Enter student time">
+                        <input type="text" name="name" id="input-id" class="form-control" required placeholder="">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-room">Date <span class="text-danger">*</span></label>
-                        <input type="date" name="date" id="input-room" class="form-control" required placeholder="Ex : C202">
+                        <input type="date" name="date" id="input-room" class="form-control" required placeholder="">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-time">Time <span class="text-danger">*</span></label>
-                        <input type="time" name="time" id="input-time" class="form-control" required placeholder="Enter single digit no.">
+                        <input type="time" name="time" id="input-time" class="form-control" required placeholder="">
                       </div>
                     </div>
+                    <tbody>
+                      <br>
+              <?php
+                $save=$_GET['updateid'];
+                $res=mysqli_query($db,"SELECT * FROM students WHERE name='$save'");
+                $check=mysqli_num_rows($res);
+                while ($row=mysqli_fetch_assoc($res)){
+                  ?>
+                  <tr>
+                  
+                  <div class="col-md-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-time">Teacher<span
+                            class="text-danger">*</span></label>
+                        <input type="data" name="teacher" id="input-time" class="form-control" value=<?php echo $row['teacher'];?> required
+                          placeholder=<?php echo $row['name'];?>>
+                      </div>
+                    </div>
+                 <br>
+                  </tr>
+                  <?php
+                  break;
+                }
+                ?>
+              </tbody>
                   </div>
                   <button name="submit" class="btn btn-icon btn-3 btn-primary" type="submit">
                     <span class="btn-inner--text">UPDATE</span>

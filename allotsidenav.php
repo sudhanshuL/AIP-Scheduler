@@ -62,24 +62,24 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="allot.php">
-            <i class="ni ni-tv-2"></i>Dashboard
+            <i class="ni ni-tv-2"></i>Candidates
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="allotworker.php">
             <i class="ni ni-send"></i>Allot
           </a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" href="complaints.php">
             <i class="ni ni-archive-2"></i>Complaints
           </a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" href="suggestions.php">
             <i class="ni ni-bulb-61"></i>Suggestions
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="registerstudent.php">
             <i class="ni ni-single-02"></i>Register Student
@@ -87,7 +87,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="registerworker.php">
-            <i class="ni ni-badge"></i>Register Housekeeper
+            <i class="ni ni-badge"></i>Register Teacher
           </a>
         </li>
         <li class="nav-item">

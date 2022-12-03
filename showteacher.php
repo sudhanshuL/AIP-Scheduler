@@ -22,7 +22,7 @@ if (isset($_GET['logout'])) {
 
 <body>
   <!-- Side Navigation -->
-  <?php require("allotsidenav.php"); ?>
+  <?php require("allotsidenav1.php"); ?>
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->

@@ -71,16 +71,16 @@
             <i class="ni ni-send"></i>Requests
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="feedback.php">
             <i class="ni ni-archive-2"></i>Feedback
           </a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" href="profile.php">
             <i class="ni ni-single-02"></i>Profile
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="index.php?logout='1'">
             <i class="ni ni-user-run"></i> Logout

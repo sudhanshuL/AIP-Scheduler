@@ -59,7 +59,7 @@ if (isset($_GET['logout'])) {
                         <label class="form-control-label" for="input-id">Student name <span
                             class="text-danger">*</span></label>
                         <input type="text" name="regStudent" id="input-id" class="form-control" required
-                          placeholder="Enter student time">
+                          placeholder="">
                       </div>
                     </div>
                     <div class="col-md-3">
@@ -67,7 +67,7 @@ if (isset($_GET['logout'])) {
                         <label class="form-control-label" for="input-room">Date <span
                             class="text-danger">*</span></label>
                         <input type="date" name="regDate" id="input-room" class="form-control" required
-                          placeholder="Ex : C202">
+                          placeholder="">
                       </div>
                     </div>
                     <div class="col-md-3">
@@ -75,7 +75,7 @@ if (isset($_GET['logout'])) {
                         <label class="form-control-label" for="input-time">Time <span
                             class="text-danger">*</span></label>
                         <input type="time" name="regTime" id="input-time" class="form-control" required
-                          placeholder="Enter single digit no.">
+                          placeholder="">
                       </div>
                     </div>
                     <div class="col-md-3">
@@ -83,10 +83,11 @@ if (isset($_GET['logout'])) {
                         <label class="form-control-label" for="input-time">Password <span
                             class="text-danger">*</span></label>
                         <input type="data" name="regPassword" id="input-time" class="form-control" required
-                          placeholder="Enter single digit no.">
+                          placeholder="" value="12345">
                       </div>
                     </div>
-                    Assigned Teacher from the system will be
+                    
+                    <!-- <br> -->
                     <!-- <?php
                     $val=1;
                     $res=mysqli_query($db,"select name from teachers order by time limit $val");
@@ -98,26 +99,14 @@ if (isset($_GET['logout'])) {
                     <tbody>
                       <br>
               <?php
-                // $res=mysqli_query($db,"select * from teachers");
-                // $res=mysqli_query($db,"select * from teachers");
-                // $check=mysqli_num_rows($res);
                 $res=mysqli_query($db,"select * from teachers order by time desc");
                 $check=mysqli_num_rows($res);
                 while ($row=mysqli_fetch_assoc($res)){
-                  // echo $row;
-                  // echo $row['time'];
-                  // echo $row['time'];
-                  // $save=$row['name'];
-                  // $save1=$row["time"]-1;
-                  // // $save2=$row["time"];
-                  // echo $save1;
-                  // $res=mysqli_query($db,"UPDATE teachers SET time=$save WHERE name='$save1'");
-                  // $check=mysqli_num_rows($res);
-                  // echo $check;
                   ?>
                   <tr>
-                  <td><?php echo $row['name'];?></td>
+                  <!-- <td><?php echo $row['name'];?></td> -->
                   <div class="col-md-3">
+                    
                       <div class="form-group">
                         <label class="form-control-label" for="input-time">Teacher<span
                             class="text-danger">*</span></label>
